@@ -1,0 +1,12 @@
+FROM node:carbon
+
+# Create app directory
+ADD . /app
+WORKDIR /app
+
+RUN npm set progress=false \
+    && npm i nodemon apidoc babel-cli -g -q \
+    && npm i -q
+
+EXPOSE 3050
+CMD nodemon --watch src --exec npm start
